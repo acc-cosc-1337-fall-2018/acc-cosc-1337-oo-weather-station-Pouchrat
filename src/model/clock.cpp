@@ -21,5 +21,5 @@ void Clock::display_time()
 	auto seconds = std::chrono::system_clock::now().time_since_epoch() /
 		std::chrono::seconds(1);
 
-	cout << get_hours(seconds) << ":" << get_minutes(seconds) << ":" << get_seconds(seconds);
+	cout << get_hours(seconds) << " " << get_minutes(seconds) << " " << get_seconds(seconds);
 }
