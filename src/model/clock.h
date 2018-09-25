@@ -1,19 +1,25 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
-using std::cout; using std::cin; using std::cerr; using std::string; using std::vector;
-
-// makes it so clock class only gets used once:
 #ifndef CLOCK_H
 #define CLOCK_H
+#include<chrono>
 
-class Clock {
-	public:
-		int get_hours(long long seconds); //long long allows for REALLY big numbers
-		int get_minutes(long long seconds);
-		int get_seconds(long long seconds);
-		void display_time();
+class Clock 
+{
+public:
+	Clock() 
+	{
+		seconds = std::chrono::system_clock::now().time_since_epoch() /
+			std::chrono::seconds(1);
+	}
+	Clock(long long sec) : seconds(sec) {}
+	int get_hours() const;
+	int get_minutes() const;
+	int get_seconds() const;
+	void display_time();
+
+private:
+	long long seconds;
+	void update_time();
+
 };
 
 #endif // CLOCK_H

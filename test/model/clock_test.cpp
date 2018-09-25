@@ -2,27 +2,41 @@
 #include "catch.hpp"
 #include "clock.h"
 
-TEST_CASE("Test get hours from seconds") {
-	Clock clock;
+TEST_CASE("Test get hours from seconds") 
+{
+	Clock clock(3600);
+	REQUIRE(clock.get_hours() == 1);
 
-	REQUIRE(clock.get_hours(3600) == 1);
-	REQUIRE(clock.get_hours(34950) == 9);
-	REQUIRE(clock.get_hours(68950) == 19);
-	REQUIRE(clock.get_hours(150000) == 17);
+	Clock clock1(34950);
+	REQUIRE(clock1.get_hours() == 9);
+
+	Clock clock2(68950);
+	REQUIRE(clock2.get_hours() == 19);
+
+	Clock clock3(150000);
+	REQUIRE(clock3.get_hours() == 17);
 }
 
-TEST_CASE("Test get minutes from seconds") {
-	Clock clock;
+TEST_CASE("Test get minutes from seconds") 
+{
+	Clock clock(3900);
+	REQUIRE(clock.get_minutes() == 0);
 
-	REQUIRE(clock.get_minutes(3600) == 0);
-	REQUIRE(clock.get_minutes(3800) == 3);
-	REQUIRE(clock.get_minutes(34950) == 42);
+	Clock clock1(3800);
+	REQUIRE(clock1.get_minutes() == 3);
+
+	Clock clock2(34950);
+	REQUIRE(clock2.get_minutes() == 42);
 }
 
-TEST_CASE("Test get sec from sec since 1970") {
-	Clock clock;
+TEST_CASE("Test get seconds from seconds since 1970") 
+{
+	Clock clock(3600);
+	REQUIRE(clock.get_seconds() == 0);
 
-	REQUIRE(clock.get_seconds(3600) == 0);
-	REQUIRE(clock.get_seconds(3800) == 20);
-	REQUIRE(clock.get_seconds(34950) == 30);
+	Clock clock1(3800);
+	REQUIRE(clock1.get_seconds() == 20);
+
+	Clock clock2(34950);
+	REQUIRE(clock2.get_seconds() == 30);
 }
