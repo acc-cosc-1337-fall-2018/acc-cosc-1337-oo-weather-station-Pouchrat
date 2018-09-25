@@ -1,6 +1,8 @@
 #include "clock.h"
 #include<iostream>
 
+
+
 int Clock::get_hours() const
 {
 	return seconds / 3600 % 24;
