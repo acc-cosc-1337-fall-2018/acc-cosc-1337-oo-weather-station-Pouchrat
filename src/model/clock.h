@@ -1,8 +1,9 @@
-#ifndef CLOCK_H
-#define CLOCK_H
 #include<chrono>
 #include <iostream>
 #include <thread>
+
+#ifndef CLOCK_H
+#define CLOCK_H
 
 class Clock 
 {
